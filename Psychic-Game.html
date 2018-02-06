@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+  <meta charset="UTF-8">
+  <title>The Psychic Game</title>
+</head>
+<body>
+  <div id="divID">
+    <h1>The Psychic Game</h1>
+    <p>Can you guess the letter I am thinking of? Press any key to start.</p>
+
+  </div>
+
+
+<style type="text/css">
+
+      p {
+        font-size: 20px;
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+</style>
+
+
+<div class=container> 
+  <script type="text/javascript">
+          var win = 0;
+          var lose = 0;
+          var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+          var chosen = []; 
+          var guessesLeft = 8;
+ 
+    document.onkeyup = function(event) {
+    var guess = event.key;
+    chosen.push(guess);   
+    var rightAnswer = alphabet[Math.floor(Math.random() * alphabet.length)];
+
+    if (guess === rightAnswer) {
+      win++;
+      
+    }
+
+    else {
+      guessesLeft--;
+    }
+
+    if (guessesLeft === 0){
+      lose++;
+      guessesLeft = 8;
+    }
+
+
+var html = "<h1>Can you guess the letter I am thinking of?</h1>" + "<p>Won: " + win + "</p>" + "<p>Lost: "+ lose + "<p>Guesses Left: " + guessesLeft + "<p>Guessed Letters: " +  chosen.join(', '); 
+
+    document.querySelector("#divID").innerHTML = html;
+    
+  }
+  </script>
+
+</div>
+</body>
+</html>
